@@ -1,0 +1,7 @@
+{
+  "name": "ac-ui",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
