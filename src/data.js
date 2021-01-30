@@ -3,4 +3,3 @@ export const modes = ["ΑΥΤΟΜΑΤΗ", "ΑΦΥΓΡΑΝΣΗ", "ΘΕΡΜΑΝΣ�
 export const modesIcons = [shuffle, umbrella, sunny, snow];
 export const intensity = ["ΑΥΤΟΜΑΤΗ", "ΧΑΜΗΛΗ", "ΜΕΣΑΙΑ", "ΥΨΗΛΗ"];
 export const intensityIcons = [shuffle, remove, reorderTwo, reorderThree];
-export const appHelp = "";

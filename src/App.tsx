@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { IonApp, IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonGrid, IonRow, IonCol, IonModal, IonIcon } from '@ionic/react';
+import { IonApp, IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonGrid, IonRow, IonCol, IonModal, IonIcon, IonText } from '@ionic/react';
 import Menu from './components/Menu';
-import { power, informationCircle } from 'ionicons/icons';
+import { power, informationCircle, caretUp, caretDown, play, pause } from 'ionicons/icons';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -75,20 +75,23 @@ const App: React.FC = () => {
       if(minutes < 60){
         if(minutes > 50){
           setMinutes(60);
-          setSeconds(0);
         } else {
-          setMinutes(minutes + 10);
+          setMinutes(minutes - (minutes % 10) + 10);
         }
-        
+        setSeconds(0);
       }
     } else {
       if(minutes > 0){
         if(minutes < 10){
           setMinutes(0);
-          setSeconds(0);
         } else {
-          setMinutes(minutes - 10);
+          if(minutes % 10 === 0){
+            setMinutes(minutes - 10);
+          } else {
+            setMinutes(minutes - (minutes % 10));
+          }  
         }
+        setSeconds(0);
       }
     } 
   }
@@ -115,7 +118,8 @@ const App: React.FC = () => {
           <IonRow>
             <IonCol>
               <IonButton size="large" expand="block" color="light" onClick={handlePower}>
-                <IonIcon className="powerButton" size="large" icon={power} color={appPower ? "danger" : "success"}/>
+                <IonIcon slot="start" className="powerButton" size="large" icon={power} color={appPower ? "danger" : "success"}/>
+                {appPower ? "ΑΠΕΝΕΡΓΟΠΟΙΗΣΗ" : "ΕΝΕΡΓΟΠΟΙΗΣΗ"}
               </IonButton>
             </IonCol>
           </IonRow>
@@ -128,6 +132,7 @@ const App: React.FC = () => {
             minutes={minutes}
             seconds={seconds}
             timerOn={timerAction}
+            powerHandler={handlePower}
             modeHandler={handleMode}
             intensityHandler={handleIntensity}
             temperatureHandler={handleTemperature}
@@ -147,7 +152,14 @@ const App: React.FC = () => {
           </IonRow>
         </IonGrid>
         <IonModal isOpen={showHelp} onDidDismiss={() => setShowHelp(false)}>
-          ΠΕΡΙΕΧΟΜΕΝΟ ΒΟΗΘΕΙΑΣ ΓΙΑ ΤΗΝ ΕΦΑΡΜΟΓΗ
+          <IonToolbar className="ion-align-items-center">
+            <IonTitle className="ion-text-center">ΠΛΗΡΟΦΟΡΙΕΣ ΓΙΑ ΤΗ ΧΡΗΣΗ ΤΟΥ ΧΕΙΡΙΣΤΗΡΙΟΥ</IonTitle>
+            </IonToolbar>
+          <p>Για την προσαρμογή της ΘΕΡΜΟΚΡΑΣΙΑΣ στο επίπεδο που θέλετε, πατήστε <IonIcon icon={caretUp} color="primary"/> για αύξηση και <IonIcon icon={caretDown} color="primary"/> για μείωση.</p>
+          <p>Πατήστε το κουμπί <IonText color="primary">ΑΛΛΑΓΗ</IonText> στο πεδίο της ΛΕΙΤΟΥΡΓΙΑΣ για να αλλάξετε σε ΘΕΡΜΑΝΣΗ, ΨΥΞΗ, ΑΦΥΓΡΑΝΣΗ ή ΑΥΤΟΜΑΤΗ ΛΕΙΤΟΥΡΓΙΑ.</p>
+          <p>Στο πεδίο της ΕΝΤΑΣΗΣ πατήστε το κουμπί <IonText color="primary">ΑΛΛΑΓΗ</IonText> για να την προσαρμόσετε σε ΧΑΜΗΛΗ, ΜΕΣΑΙΑ, ΥΨΗΛΗ ή ΑΥΤΟΜΑΤΗ.</p>
+          <p>Στο πεδίο ΚΙΝΗΣΗ ΠΕΡΣΙΔΩΝ πατήστε το κουμπί <IonText color="primary">ΑΛΛΑΓΗ</IonText> για να ενεργοποιήσετε ή να απενεργοποιήσετε την κίνηση των περσίδων, για καλύτερη κατανομή του αέρα στον χώρο.</p>
+          <p>Αν θέλετε το κλιματιστικό να απενεργοποιηθεί αυτόματα μετά από μερικά λεπτά, στο πεδίο ΧΡΟΝΟΜΕΤΡΟ προσαρμόστε την χρονική διάρκεια με τα βελάκια <IonIcon icon={caretUp} color="primary"/>, <IonIcon icon={caretDown} color="primary"/> και πατήστε το κουμπί με την ένδειξη <IonIcon icon={play} color="primary"/>. Το χρονόμετρο θα αρχίσει να λειτουργεί και θα κλείσει το κλιματιστικό μόλις φτάσει στο 0. Όσο το χρονόμετρο τρέχει, μπορείτε να πατήστε το κουμπί με την ένδειξη <IonIcon icon={pause} color="primary"/> για να σταματήσετε την λειτουργία του.</p>
           <IonButton onClick={() => setShowHelp(false)}>ΕΠΙΣΤΡΟΦΗ</IonButton>
         </IonModal>
       </IonContent>

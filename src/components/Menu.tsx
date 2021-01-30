@@ -1,5 +1,5 @@
 import React from "react";
-import { IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonItem, IonIcon, IonCardContent, IonItemDivider,IonButton, IonLabel, IonText } from "@ionic/react";
+import { IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonItem, IonIcon, IonCardContent, IonItemDivider,IonButton, IonLabel } from "@ionic/react";
 import { thermometer, swapVertical, timer, pause, play, caretUp, caretDown } from "ionicons/icons";
 import { modes, modesIcons, intensity, intensityIcons } from "../data";
 
@@ -13,7 +13,8 @@ const Menu: React.FC<{
     swing: boolean; 
     minutes: number;
     seconds: number;
-    timerOn: boolean; 
+    timerOn: boolean;
+    powerHandler: () => void;
     modeHandler: () => void; 
     intensityHandler: () => void; 
     temperatureHandler: (event: any) => void; 
@@ -39,21 +40,20 @@ const Menu: React.FC<{
                         </IonCardTitle>
                     </IonCardHeader>
                     <IonCardContent>
-                        <IonItemDivider>
-                            {props.temperature}°C
-                        </IonItemDivider>
+                        <IonItemDivider>{props.temperature}°C</IonItemDivider>
                     </IonCardContent>
                 </IonCard>
                 </IonCol>
-                <IonCol size="2">
-                    <IonCard>
-                        <IonCardHeader>
-                            <IonButton id="plus" onClick={props.temperatureHandler}><IonIcon size="large" icon={caretUp} /></IonButton>
-                        </IonCardHeader>
-                        <IonCardContent>
-                            <IonButton id="minus" onClick={props.temperatureHandler}><IonIcon size="large" icon={caretDown} /></IonButton>
-                        </IonCardContent>
-                    </IonCard>
+                <IonCol size="2" className="ion-align-items-center">
+                    <IonRow>
+                        <br/>
+                    </IonRow>
+                    <IonRow>
+                        <IonButton id="plus" onClick={props.temperatureHandler}><IonIcon size="large" icon={caretUp} /></IonButton>
+                    </IonRow>
+                    <IonRow>
+                        <IonButton id="minus" onClick={props.temperatureHandler}><IonIcon size="large" icon={caretDown} /></IonButton>
+                    </IonRow>
                 </IonCol>
             </IonRow>
             <IonRow>
@@ -102,7 +102,7 @@ const Menu: React.FC<{
                         </IonCardTitle>
                     </IonCardHeader>
                     <IonCardContent>
-                        <IonItemDivider>{props.swing ? "ΕΝΕΡΓΗ" : "ΚΛΕΙΣΤΗ"}</IonItemDivider>
+                        <IonItemDivider>{props.swing ? "ΑΝΟΙΧΤΗ" : "ΚΛΕΙΣΤΗ"}</IonItemDivider>
                         <IonButton expand="block" onClick={props.swingHandler}>ΑΛΛΑΓΗ</IonButton>
                     </IonCardContent>
                 </IonCard>
@@ -118,8 +118,7 @@ const Menu: React.FC<{
                         </IonCardTitle>
                     </IonCardHeader>
                     <IonCardContent>
-                        {/* <IonItemDivider>{props.timer}</IonItemDivider> */}
-                        <Timer isOn={props.timerOn} minutes={props.minutes} seconds={props.seconds} minutesHandler={props.minutesHandler} secondsHandler={props.secondsHandler}/>
+                    <IonItemDivider><Timer isOn={props.timerOn} minutes={props.minutes} seconds={props.seconds} minutesHandler={props.minutesHandler} secondsHandler={props.secondsHandler} timerOff={props.timerHandler} appOff={props.powerHandler} /></IonItemDivider>
                         <IonButton onClick={props.timerHandler}>{props.timerOn ? <IonIcon size="large" icon={pause} color="danger"/> : <IonIcon size="large" icon={play} color="success"/>}</IonButton>
                         <IonButton id="plus" onClick={props.timerChanger}><IonIcon  icon={caretUp} /></IonButton>
                         <IonButton id="minus" onClick={props.timerChanger}><IonIcon  icon={caretDown} /></IonButton>

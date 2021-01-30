@@ -6,6 +6,8 @@ const Timer: React.FC<{
     number; 
     minutesHandler: (min: number) => void; 
     secondsHandler: (sec: number) => void;
+    timerOff: () => void;
+    appOff: () => void;
     }> 
     = (props) => {
 
@@ -18,6 +20,8 @@ const Timer: React.FC<{
                 if (props.seconds === 0) {
                     if (props.minutes === 0) {
                         clearInterval(myInterval);
+                        props.appOff();
+                        props.timerOff();
                     } else {
                         props.minutesHandler(props.minutes - 1);
                         props.secondsHandler(59);
