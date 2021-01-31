@@ -2,7 +2,6 @@ import React from "react";
 import { IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonItem, IonIcon, IonCardContent, IonItemDivider,IonButton, IonLabel } from "@ionic/react";
 import { thermometer, swapVertical, timer, pause, play, caretUp, caretDown } from "ionicons/icons";
 import { modes, modesIcons, intensity, intensityIcons } from "../data";
-
 import Timer from './Timer';
 
 const Menu: React.FC<{
@@ -119,7 +118,7 @@ const Menu: React.FC<{
                     </IonCardHeader>
                     <IonCardContent>
                     <IonItemDivider><Timer isOn={props.timerOn} minutes={props.minutes} seconds={props.seconds} minutesHandler={props.minutesHandler} secondsHandler={props.secondsHandler} timerOff={props.timerHandler} appOff={props.powerHandler} /></IonItemDivider>
-                        <IonButton onClick={props.timerHandler}>{props.timerOn ? <IonIcon size="large" icon={pause} color="danger"/> : <IonIcon size="large" icon={play} color="success"/>}</IonButton>
+                        <IonButton onClick={props.timerHandler}>{props.timerOn ? <IonIcon icon={pause} color="danger"/> : <IonIcon size="large" icon={play} color="success"/>}</IonButton>
                         <IonButton id="plus" onClick={props.timerChanger}><IonIcon  icon={caretUp} /></IonButton>
                         <IonButton id="minus" onClick={props.timerChanger}><IonIcon  icon={caretDown} /></IonButton>
                     </IonCardContent>

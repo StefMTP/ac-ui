@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
-
+const fStyle = {
+    fontSize: '1.5rem',
+};
 const Timer: React.FC<{ 
     isOn: boolean;
     minutes: number; seconds: 
@@ -37,7 +39,7 @@ const Timer: React.FC<{
 
     return (
         <div>
-            <h1> {props.minutes}:{props.seconds < 10 ?  `0${props.seconds}` : props.seconds}</h1> 
+            <h1 style={fStyle}> {props.minutes}:{props.seconds < 10 ?  `0${props.seconds}` : props.seconds}</h1> 
         </div>
     );
 }

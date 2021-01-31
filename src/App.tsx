@@ -118,7 +118,7 @@ const App: React.FC = () => {
           <IonRow>
             <IonCol>
               <IonButton size="large" expand="block" color="light" onClick={handlePower}>
-                <IonIcon slot="start" className="powerButton" size="large" icon={power} color={appPower ? "danger" : "success"}/>
+                <IonIcon slot="start" className="powerButton" icon={power} color={appPower ? "danger" : "success"}/>
                 {appPower ? "ΑΠΕΝΕΡΓΟΠΟΙΗΣΗ" : "ΕΝΕΡΓΟΠΟΙΗΣΗ"}
               </IonButton>
             </IonCol>
