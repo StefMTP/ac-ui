@@ -98,7 +98,7 @@ ion-item-divider {
 }
 
 * {
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif !important;
   font-size: 1.2rem;
 }
 
