@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { IonApp, IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonGrid, IonRow, IonCol, IonModal, IonIcon, IonText } from '@ionic/react';
+import { IonApp, IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonGrid, IonRow, IonCol, IonModal, IonIcon, IonText, IonToggle } from '@ionic/react';
 import Menu from './components/Menu';
-import { power, informationCircle, caretUp, caretDown, play, pause } from 'ionicons/icons';
+import { power, informationCircle, caretUp, caretDown, play, pause, moon } from 'ionicons/icons';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -22,7 +22,7 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
-// TODO: FIX LAYOUT AND DESIGN OF BUTTONS, CHANGE FONT AND FONT SIZES
+// TODO: DARK THEME TOGGLER
 
 const App: React.FC = () => {
   const [appPower, setAppPower] = useState<boolean>(false);
@@ -103,14 +103,28 @@ const App: React.FC = () => {
   const handleSeconds = (sec: number) => {
     setSeconds(sec);
   }
+
+  const toggleDarkModeHandler = () => {
+    document.body.classList.toggle('dark');
+  }
   
   return (
     <IonApp>
       <IonHeader>
         <IonToolbar color="primary" className="ion-align-items-center">
-          <IonTitle className="ion-text-center">
+          <IonTitle slot="start" className="ion-text-center">
             ΧΕΙΡΙΣΤΗΡΙΟ ΚΛΙΜΑΤΙΣΤΙΚΟΥ
           </IonTitle>
+            <IonIcon
+              slot="end"
+              icon={moon}
+              className="component-icon component-icon-dark"
+            />
+            <IonToggle 
+              slot="end"
+              name="darkMode"
+              onIonChange={toggleDarkModeHandler}
+            />
         </IonToolbar>
       </IonHeader>
       <IonContent>
@@ -155,12 +169,15 @@ const App: React.FC = () => {
           <IonToolbar className="ion-align-items-center">
             <IonTitle className="ion-text-center">ΠΛΗΡΟΦΟΡΙΕΣ ΓΙΑ ΤΗ ΧΡΗΣΗ ΤΟΥ ΧΕΙΡΙΣΤΗΡΙΟΥ</IonTitle>
             </IonToolbar>
-          <p>Για την προσαρμογή της ΘΕΡΜΟΚΡΑΣΙΑΣ στο επίπεδο που θέλετε, πατήστε <IonIcon icon={caretUp} color="primary"/> για αύξηση και <IonIcon icon={caretDown} color="primary"/> για μείωση.</p>
-          <p>Πατήστε το κουμπί <IonText color="primary">ΑΛΛΑΓΗ</IonText> στο πεδίο της ΛΕΙΤΟΥΡΓΙΑΣ για να αλλάξετε σε ΘΕΡΜΑΝΣΗ, ΨΥΞΗ, ΑΦΥΓΡΑΝΣΗ ή ΑΥΤΟΜΑΤΗ ΛΕΙΤΟΥΡΓΙΑ.</p>
-          <p>Στο πεδίο της ΕΝΤΑΣΗΣ πατήστε το κουμπί <IonText color="primary">ΑΛΛΑΓΗ</IonText> για να την προσαρμόσετε σε ΧΑΜΗΛΗ, ΜΕΣΑΙΑ, ΥΨΗΛΗ ή ΑΥΤΟΜΑΤΗ.</p>
-          <p>Στο πεδίο ΚΙΝΗΣΗ ΠΕΡΣΙΔΩΝ πατήστε το κουμπί <IonText color="primary">ΑΛΛΑΓΗ</IonText> για να ενεργοποιήσετε ή να απενεργοποιήσετε την κίνηση των περσίδων, για καλύτερη κατανομή του αέρα στον χώρο.</p>
-          <p>Αν θέλετε το κλιματιστικό να απενεργοποιηθεί αυτόματα μετά από μερικά λεπτά, στο πεδίο ΧΡΟΝΟΜΕΤΡΟ προσαρμόστε την χρονική διάρκεια με τα βελάκια <IonIcon icon={caretUp} color="primary"/>, <IonIcon icon={caretDown} color="primary"/> και πατήστε το κουμπί με την ένδειξη <IonIcon icon={play} color="primary"/>. Το χρονόμετρο θα αρχίσει να λειτουργεί και θα κλείσει το κλιματιστικό μόλις φτάσει στο 0.</p>
-          <p>Όσο το χρονόμετρο τρέχει, μπορείτε να πατήστε το κουμπί με την ένδειξη <IonIcon icon={pause} color="primary"/> για να σταματήσετε την λειτουργία του.</p>
+          <IonText color="dark">
+            <p>Για την προσαρμογή της ΘΕΡΜΟΚΡΑΣΙΑΣ στο επίπεδο που θέλετε, πατήστε <IonIcon icon={caretUp} color="primary"/> για αύξηση και <IonIcon icon={caretDown} color="primary"/> για μείωση.</p>
+            <p>Πατήστε το κουμπί <IonText color="primary">ΑΛΛΑΓΗ</IonText> στο πεδίο της ΛΕΙΤΟΥΡΓΙΑΣ για να αλλάξετε σε ΘΕΡΜΑΝΣΗ, ΨΥΞΗ, ΑΦΥΓΡΑΝΣΗ ή ΑΥΤΟΜΑΤΗ ΛΕΙΤΟΥΡΓΙΑ.</p>
+            <p>Στο πεδίο της ΕΝΤΑΣΗΣ πατήστε το κουμπί <IonText color="primary">ΑΛΛΑΓΗ</IonText> για να την προσαρμόσετε σε ΧΑΜΗΛΗ, ΜΕΣΑΙΑ, ΥΨΗΛΗ ή ΑΥΤΟΜΑΤΗ.</p>
+            <p>Στο πεδίο ΚΙΝΗΣΗ ΠΕΡΣΙΔΩΝ πατήστε το κουμπί <IonText color="primary">ΑΛΛΑΓΗ</IonText> για να ενεργοποιήσετε ή να απενεργοποιήσετε την κίνηση των περσίδων, για καλύτερη κατανομή του αέρα στον χώρο.</p>
+            <p>Αν θέλετε το κλιματιστικό να απενεργοποιηθεί αυτόματα μετά από μερικά λεπτά, στο πεδίο ΧΡΟΝΟΜΕΤΡΟ προσαρμόστε την χρονική διάρκεια με τα βελάκια <IonIcon icon={caretUp} color="primary"/>, <IonIcon icon={caretDown} color="primary"/> και πατήστε το κουμπί με την ένδειξη <IonIcon icon={play} color="primary"/>. Το χρονόμετρο θα αρχίσει να λειτουργεί και θα κλείσει το κλιματιστικό μόλις φτάσει στο 0.</p>
+            <p>Όσο το χρονόμετρο τρέχει, μπορείτε να πατήστε το κουμπί με την ένδειξη <IonIcon icon={pause} color="primary"/> για να σταματήσετε την λειτουργία του.</p>
+            <p>Πάνω δεξιά, πατώντας το κουμπί δίπλα από το εικονίδιο <IonIcon icon={moon} color="primary"/>, μπορείτε να αλλάξετε το χρωματικό θέμα σε σκοτεινό, ή να το επαναφέρεται σε φωτεινό.</p>
+          </IonText>
           <IonButton onClick={() => setShowHelp(false)}>ΕΠΙΣΤΡΟΦΗ</IonButton>
         </IonModal>
       </IonContent>
