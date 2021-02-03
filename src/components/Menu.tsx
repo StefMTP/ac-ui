@@ -43,15 +43,12 @@ const Menu: React.FC<{
                     </IonCardContent>
                 </IonCard>
                 </IonCol>
-                <IonCol size="2" className="ion-align-items-center">
+                <IonCol size="2" className="ion-align-items-center fix">
                     <IonRow>
-                        <br/>
+                        <IonButton size="large" id="plus" onClick={props.temperatureHandler}><IonIcon size="large" icon={caretUp} /></IonButton>
                     </IonRow>
                     <IonRow>
-                        <IonButton id="plus" onClick={props.temperatureHandler}><IonIcon size="large" icon={caretUp} /></IonButton>
-                    </IonRow>
-                    <IonRow>
-                        <IonButton id="minus" onClick={props.temperatureHandler}><IonIcon size="large" icon={caretDown} /></IonButton>
+                        <IonButton size="large" id="minus" onClick={props.temperatureHandler}><IonIcon size="large" icon={caretDown} /></IonButton>
                     </IonRow>
                 </IonCol>
             </IonRow>
@@ -107,7 +104,7 @@ const Menu: React.FC<{
                 </IonCard>
                 </IonCol>
                 <IonCol>
-                <IonCard>
+                <IonCard className="fix-bottom">
                     <IonCardHeader>
                         <IonCardTitle>
                             <IonItem>

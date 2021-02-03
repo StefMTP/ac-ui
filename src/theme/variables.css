@@ -77,6 +77,14 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-light-tint: #f5f6f9;
 }
 
+.fix {
+  padding-top: 15px;
+}
+
+.fix-bottom {
+  padding-bottom: 7px;
+}
+
 ion-icon {
   font-size: 32px;
 }
@@ -90,7 +98,7 @@ ion-item-divider {
 }
 
 * {
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif !important;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size: 1.2rem;
 }
 
