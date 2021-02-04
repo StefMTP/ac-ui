@@ -77,6 +77,12 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-light-tint: #f5f6f9;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap');
+
+ion-text p {
+  font-family: 'Didact Gothic', sans-serif !important;
+}
+
 .fix {
   padding-top: 15px;
 }

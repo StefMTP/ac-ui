@@ -22,7 +22,6 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
-// TODO: DARK THEME TOGGLER
 
 const App: React.FC = () => {
   const [appPower, setAppPower] = useState<boolean>(false);
@@ -175,7 +174,7 @@ const App: React.FC = () => {
             <p>Στο πεδίο της ΕΝΤΑΣΗΣ πατήστε το κουμπί <IonText color="primary">ΑΛΛΑΓΗ</IonText> για να την προσαρμόσετε σε ΧΑΜΗΛΗ, ΜΕΣΑΙΑ, ΥΨΗΛΗ ή ΑΥΤΟΜΑΤΗ.</p>
             <p>Στο πεδίο ΚΙΝΗΣΗ ΠΕΡΣΙΔΩΝ πατήστε το κουμπί <IonText color="primary">ΑΛΛΑΓΗ</IonText> για να ενεργοποιήσετε ή να απενεργοποιήσετε την κίνηση των περσίδων, για καλύτερη κατανομή του αέρα στον χώρο.</p>
             <p>Αν θέλετε το κλιματιστικό να απενεργοποιηθεί αυτόματα μετά από μερικά λεπτά, στο πεδίο ΧΡΟΝΟΜΕΤΡΟ προσαρμόστε την χρονική διάρκεια με τα βελάκια <IonIcon icon={caretUp} color="primary"/>, <IonIcon icon={caretDown} color="primary"/> και πατήστε το κουμπί με την ένδειξη <IonIcon icon={play} color="primary"/>. Το χρονόμετρο θα αρχίσει να λειτουργεί και θα κλείσει το κλιματιστικό μόλις φτάσει στο 0.</p>
-            <p>Όσο το χρονόμετρο τρέχει, μπορείτε να πατήστε το κουμπί με την ένδειξη <IonIcon icon={pause} color="primary"/> για να σταματήσετε την λειτουργία του.</p>
+            <p>Όσο το χρονόμετρο τρέχει, μπορείτε να πατήσετε το κουμπί με την ένδειξη <IonIcon icon={pause} color="primary"/> για να σταματήσετε την λειτουργία του.</p>
             <p>Πάνω δεξιά, πατώντας το κουμπί δίπλα από το εικονίδιο <IonIcon icon={moon} color="primary"/>, μπορείτε να αλλάξετε το χρωματικό θέμα σε σκοτεινό, ή να το επαναφέρεται σε φωτεινό.</p>
           </IonText>
           <IonButton onClick={() => setShowHelp(false)}>ΕΠΙΣΤΡΟΦΗ</IonButton>

@@ -1,5 +1,5 @@
 import React from "react";
-import { IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonItem, IonIcon, IonCardContent, IonItemDivider,IonButton, IonLabel } from "@ionic/react";
+import { IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonItem, IonIcon, IonCardContent, IonItemDivider,IonButton } from "@ionic/react";
 import { thermometer, swapVertical, timer, pause, play, caretUp, caretDown } from "ionicons/icons";
 import { modes, modesIcons, intensity, intensityIcons } from "../data";
 import Timer from './Timer';
@@ -33,7 +33,7 @@ const Menu: React.FC<{
                     <IonCardHeader>
                         <IonCardTitle>
                             <IonItem>
-                                <IonLabel>ΘΕΡΜΟΚΡΑΣΙΑ</IonLabel>
+                                ΘΕΡΜΟΚΡΑΣΙΑ
                                 <IonIcon slot="start" icon={thermometer} color="primary"/>
                             </IonItem>
                         </IonCardTitle>
